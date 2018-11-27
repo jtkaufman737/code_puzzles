@@ -1,0 +1,37 @@
+// option one, which I guess I like because it will stop as soon as it finds a match
+
+/*
+let testString = "abcdefghij=k";
+testString = testString.split("").sort();
+
+for(var i=0; i < testString.length; i++) {
+  if(testString[i] == testString[i+1]) {
+    console.log("String contains match of character " + testString[i]);
+    break;
+  } else if(i === testString.length - 1) {
+    console.log("No matches found.");
+  }
+}
+
+*/ 
+
+// option two - originally I was going to use filter() but this wound
+// up being easier because of some behavior of filter I forgot. 
+// This was the one I googled because I forgot something about filter 
+// implementation so if I get points off they should be off here lol :0
+
+/* 
+
+let testString = "abc";
+
+// for each element in testString
+testString.split("").some(m => {
+  if(testString.indexOf(m) !== testString.lastIndexOf(m)) {
+    return true;
+  } else {
+    return false;
+  }
+})
+
+*/ 
+
