@@ -1,0 +1,22 @@
+function testPermutationStrings(str1,str2) {
+  str2 = str2.split("");
+
+  for(let i=0; i < str1.length; i++) {
+    if(str2.indexOf(str1[i]) == - 1) {
+      console.log("The first string contains letters not found in string two.");
+      break;
+    } else {
+      console.log("Match found")
+    }
+
+    str2.splice(str2.indexOf(str1[i]),1);
+    // this bit of idiocy was so if the first string has two aa's and the second string has one a 
+    // it should NOT count as a match and gets preventatively sliced (lol)
+  }
+}
+
+// Can uncomment to run some tests 
+// testPermutationStrings("abcd","abc"); // should fail
+// testPermutationStrings("abc","abcdef"); // should pass 
+// testPermutationStrings("abcdd", "abcd"); // should fail 
+// testPermutationStrings("abfdsjfdsfds","abc"); // should fail 
