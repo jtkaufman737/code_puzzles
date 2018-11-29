@@ -1,0 +1,30 @@
+def testPalin(string):
+  string = list(string.lower()) # eliminate case issues 
+  odds = 0
+  # print(string)
+  
+  for str in string:
+    if str not in ' ':
+      keys = { str : 0 }
+      # print(keys)
+
+  for str in string:
+    if str not in ' ':
+      keys[str] = keys.get(str, 0) + 1
+      # print(keys)
+
+  for val in keys.values():
+    if val % 2 == 1:
+      odds += 1 
+
+  if odds > 1:
+    print("Sorry, not a palindrome")
+  else:
+    print("Yay, you've got a palindrome!")
+
+
+testPalin("tacoc AT") # should pass 
+testPalin("AaBbCcDd") # should pass
+testPalin("AaAbBbCcC") # should fail  
+testPalin("racecar") # should pass 
+testPalin("sidecar") # should fail 
