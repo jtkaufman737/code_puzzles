@@ -1,0 +1,29 @@
+let palindrome = "taco cat"; // should pass 
+let palindrome2 = "aa"; // should pass 
+let palindrome3 = "ra ce car"; // should pass 
+let palindrome4 = "si de car"; // should fail 
+
+
+function isPalindrome(str) {
+  let keys = {}, vals = [];
+
+  Array.from(str.split(" ").join("")).map(m => { 
+    keys[m] = 0;  // initial object with letters as keys, each count = 0 
+  })
+
+  Array.from(str).map(m => { 
+    keys[m] += 1; // For all array items, increments the count of each letter
+  })
+
+  let odds = Object.values(keys).filter(f => {
+    return f % 2 === 1; // if MORE THAN ONE odd number is there, it isn't a palindrome
+  })
+
+  odds.length > 1 ? console.log("Sorry, not a palindrome") : console.log("Congrats, its a palindrome!");
+
+}
+
+isPalindrome(palindrome);
+isPalindrome(palindrome2);
+isPalindrome(palindrome3);
+isPalindrome(palindrome4);
