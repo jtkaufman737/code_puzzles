@@ -1,0 +1,24 @@
+function compressMe(str){
+  let currCount = 1, result = "";
+
+  for(var i=0; i < str.length; i++) {
+    if(str[i] === str[i + 1]) { 
+      // all we are looking at are strings of sameness
+      currCount ++;
+    } else { 
+      // and if that pattern breaks, we take a snapshot & move on
+      result += str[i] + currCount;
+      currCount = 1;
+   }
+  }
+
+str < result ? console.log("Original is compressed: " + str) : console.log("Compressed string is: " + result);
+}
+
+compressMe("aabbcccddddeeeeeaa");
+compressMe("aaa");
+compressMe("aaaabbbbccccaaa");
+compressMe("a");
+compressMe("aa");
+compressMe("abc");
+compressMe("aabbaabbaabb")

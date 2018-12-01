@@ -1,0 +1,54 @@
+function testsOneAway(strOne, strTwo){
+  let irregularities = 0; 
+  strOne = Array.from(strOne), strTwo = Array.from(strTwo);
+  let shortString = strOne, longString = strTwo;
+
+  if(strOne.length > strTwo.length){
+    shortString = strTwo;
+    longString = strOne;
+  } 
+
+  for(let i=0; i < shortString.length; i++) {
+    if(irregularities < 2) {
+      
+      // handle same length 
+      if(strOne.length == strTwo.length) {
+        if(strOne[i] !== strTwo[i]) {
+          irregularities += 1;
+        } 
+      } else { // handle uneven length
+        if(shortString[i] != longString[i]) {
+         irregularities += 1;
+         longString.splice(i,1);   
+       }
+      }
+    } else {
+      break;
+    }
+  }
+
+  if(irregularities < 2) {
+    console.log("Great, you passed the one-away test!");
+  } else {
+    console.log("Sorry, these failed the one-away test")
+  }
+
+}
+
+
+testsOneAway("pale","patt"); // should fail 
+testsOneAway("pale","ple") // should pass 
+testsOneAway("pale","bake") // should fail
+testsOneAway("cake","bake") //should pass 
+testsOneAway("pa le","pale") // should pass
+
+/*
+pale, ple -> true
+pales, pale -> true
+pale, bale -> true
+pale, bake -> false
+MORE TEST CASES
+what if an argument is not a string? (false)
+what if the two strings are exactly the same? (true?)
+_this is not about permutations *at all*_
+*/
