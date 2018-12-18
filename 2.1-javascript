@@ -1,0 +1,45 @@
+
+function removeDups(ll, keys) {
+  var copy = JSON.parse(JSON.stringify(ll))
+  !keys ? keys = [] : "";
+
+  if(ll.head) {            // initial drilldown to get to nodes
+    ll = ll.head;
+    keys.push(ll.value);
+    console.log(ll.value);
+  } 
+  
+  if(ll.next != null) {
+   if(keys.indexOf(ll.next.value) == -1) {
+     keys.push(ll.next.value);
+     console.log(ll.value)
+     console.log('Not finding key');
+   } else {
+     console.log('Currently in :' + ll.value)
+     console.log('ALREADY HAVE KEY ' + ll.next.value)
+     console.log('Instead will assign "next" value to be: ' + JSON.stringify(ll.next.next));
+     ll.next = ll.next.next;
+   }
+   return removeDups(ll.next, keys);
+  }
+  
+  return ll;
+}
+
+var animals = {
+  head:{
+     value: "dog", next: {
+      value: "cat", next: {
+        value: "bird", next: {
+          value: "monkey", next: {
+            value: "bird", next: {
+              value: "bug", next: null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+removeDups(animals);
