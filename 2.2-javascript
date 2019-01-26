@@ -1,0 +1,29 @@
+function returnValAfter(linkedList, searchVal) {
+  linkedList.head ? linkedList = linkedList.head : '';
+
+  while(linkedList.next) {
+    if(linkedList.value === searchVal) {
+      return linkedList;
+    } else {
+      linkedList = linkedList.next;
+    }
+  }
+}
+
+var animals = {
+  head: {
+     value: "dog", next: {
+      value: "cat", next: {
+        value: "bird", next: {
+          value: "monkey", next: {
+            value: "bird", next: {
+              value: "bug", next: null
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+returnValAfter(animals, "monkey");
